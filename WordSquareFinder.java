@@ -1,4 +1,4 @@
-'''
+/*
 Given a set of words (without duplicates), find all the wordsquares.
 
 Input:
@@ -17,7 +17,7 @@ Output:
     "lady"
   ]
 ]
-'''
+*/
 
 // Use Trie to speed up DFS with backtracking.
 class WordSquareFinder {
