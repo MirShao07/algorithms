@@ -14,17 +14,17 @@ public class Robot_A_Star{
     N = 20;
     board = new int[N][N];
     Random rand = new Random();
-    // 0: walkable, 1: obstacle.
+    // 0: walkable, 1: obstacle. Place obstacles.
     for(int i=0;i<N*4;i++) board[rand.nextInt(N)][rand.nextInt(N)]=1;
     for(int[]row:board) System.out.println(Arrays.toString(row));
 
-    // Start is somewhere in the left upper corner;
+    // Start is somewhere in the upper left corner;
     int sr = rand.nextInt(N/4);
     int sc = rand.nextInt(N/4);
     // Robot must start from a 0 cell.
     while(board[sr][sc]==1){sr = rand.nextInt(N/4); sc = rand.nextInt(N/4);}
 
-    // Target is somewhere from the lower right quadrant.
+    // Target is somewhere in the lower right quadrant.
     int tr = rand.nextInt(N/2)+N/2;
     int tc = rand.nextInt(N/2)+N/2;
     // Target must be a 0 cell.
@@ -32,7 +32,7 @@ public class Robot_A_Star{
     System.out.println("start: "+sr+" "+sc);
     System.out.println("target: "+tr+" "+tc);
 
-    // Set up for A*, assuming heuristic is monotonic (euclidean distance here).
+    // Set up for A*, assuming heuristic is monotonic (taxicab here).
     closedSet = new HashSet<>();
     fringe = new PriorityQueue<int[]>((int[]e1,int[]e2)->(e1[1]-e2[1]));
     fScore = new int[N*N];
@@ -56,7 +56,7 @@ public class Robot_A_Star{
     fringe.offer(new int[]{sr*N+sc,fScore[sr*N+sc]});
     while(!fringe.isEmpty()){
       int[]cur = fringe.poll();
-      // As we don't perform change value in priority queue, we allow old values
+      // As we don't perform change value in priority queue, we allow old values.
       // So we must check if the node is the latest or not. Discard old values.
       if(cur[1]>fScore[cur[0]]) continue;
       int r = cur[0]/N; int c = cur[0]%N;
