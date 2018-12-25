@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Robot_A_Star{
   static int N;
+  static int clutter;
   static int[][]board;
   static Set<Integer> closedSet;
   static PriorityQueue<int[]> fringe;
@@ -10,12 +11,13 @@ public class Robot_A_Star{
   static int[]parent;
 
   public static void main(String[] args){
-    // Generate random board to simulate robot motion planning.
+    // Generate random N*N board to simulate robot motion planning, clutter determines the number of obstacles.
     N = 20;
+    clutter = 4;
     board = new int[N][N];
     Random rand = new Random();
     // 0: walkable, 1: obstacle. Place obstacles.
-    for(int i=0;i<N*4;i++) board[rand.nextInt(N)][rand.nextInt(N)]=1;
+    for(int i=0;i<clutter*N;i++) board[rand.nextInt(N)][rand.nextInt(N)]=1;
     for(int[]row:board) System.out.println(Arrays.toString(row));
 
     // Start is somewhere in the upper left corner;
