@@ -61,7 +61,7 @@ public class Robot_A_Star{
       if(cur[1]>fScore[cur[0]]) continue;
       int r = cur[0]/N; int c = cur[0]%N;
       // Target reached!
-      if(r==tr && c==tc){markPath(tr,tc); return;}
+      if(r==tr && c==tc){markPath(sr,sc,tr,tc); return;}
       closedSet.add(cur[0]);
       // Use 9 to mark this cell has been explored for visualsation purposes.
       board[cur[0]/N][cur[0]%N] = 9;
@@ -80,18 +80,20 @@ public class Robot_A_Star{
       }
     }
     System.out.println("No path found between "+sr+","+sc+" and "+tr+","+tc);
-    board[tr][tc] = 9;
+    board[sr][sc] = 4;
+    board[tr][tc] = 4;
     for(int[]row:board) System.out.println(Arrays.toString(row));
   }
 
-  private static void markPath(int tr,int tc){
+  private static void markPath(int sr,int sc,int tr,int tc){
     int cur = tr*N+tc;
     // Use 5 to mark the path from target back to start.
-    board[tr][tc] = 5;
     while(parent[cur]!=-1){
       cur = parent[cur];
       board[cur/N][cur%N] = 5;
     }
+    board[sr][sc] = 4;
+    board[tr][tc] = 4;
     for(int[]row:board) System.out.println(Arrays.toString(row));
   }
 
