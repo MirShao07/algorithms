@@ -1,6 +1,6 @@
-// Use Trie to speed up DFS with backtracking.
 import java.util.*;
 
+// Use Trie to speed up DFS with backtracking.
 class WordSquareFinder {
   private static class TrieNode{
       String val=null;
