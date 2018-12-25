@@ -1,4 +1,4 @@
-// Lightweight Disjoint Set Union, suitable as a subroutine
+// Disjoint Set Union (union find), suitable as a lightweight data structure
 // Weighted path compression implementation
 class DSU{
         int N;
