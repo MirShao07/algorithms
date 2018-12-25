@@ -80,6 +80,7 @@ public class Robot_A_Star{
       }
     }
     System.out.println("No path found between "+sr+","+sc+" and "+tr+","+tc);
+    board[tr][tc] = 9;
     for(int[]row:board) System.out.println(Arrays.toString(row));
   }
 
