@@ -37,11 +37,22 @@ def calculate_maxflow(graph):
 # Below is the formulation of the original problem.
 
 """
-Given a set of power outlets of different types
-A set of laptops(plugs of different types)
-A set of adapters(unlimied supply of each type)
+Given:
+A set of power outlets of different types
+A set of laptops (plugs of different types)
+A set of adapters(unlimited supply of each type)
 Match them up to minimise the number of laptops without power.
 Input in the format of [3,"NZ","British","British",3,"NZ","British","NZ",2,"NZ American","American British"]
+Output the number of laptops without power.
+
+For this input, output is 0.
+Laptop    Adapters          Outlet
+
+British       /             British
+NZ            /             NZ
+NZ        NZ-American
+          American-British  British
+So all laptops have power supply. 0 is left without power.
 """
 def graph_helper(outlets,laptops,adapters):
     #initialise network, represented by a dictionary of dictionaries
