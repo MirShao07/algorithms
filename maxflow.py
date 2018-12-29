@@ -34,8 +34,6 @@ def calculate_maxflow(graph):
     return sum([val[1] for key,val in graph['SOURCE'].items()])
 
 
-# Below is the formulation of the original problem.
-
 """
 Given:
 A set of power outlets of different types
@@ -54,6 +52,7 @@ NZ        NZ-American
           American-British  British
 So all laptops have power supply. 0 is left without power.
 """
+# Formulate the problem in a maxflow setting
 def graph_helper(outlets,laptops,adapters):
     #initialise network, represented by a dictionary of dictionaries
     fn = {}
